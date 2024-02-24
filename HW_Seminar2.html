@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <!-- Часть 2. Задание Vue
+
+Вы разрабатываете приложение для отображения и сортировки списка товаров. У вас есть массив объектов products, где каждый объект представляет товар с его названием и ценой. Вам необходимо отобразить список товаров и предоставить пользователю возможность сортировать товары по цене (по возрастанию и по убыванию).
+ -->
+
+    <div id="app">
+      <p>Сортировка по цене:</p>
+      <button @click="ascPrice">По возрастанию</button>
+      <button @click="descPrice">По убыванию</button>
+
+      <ul>
+        <li v-for="product in products">
+          {{product.name}} : {{product.price}}
+        </li>
+      </ul>
+    </div>
+
+    <script>
+      const app = {
+        data() {
+          return {
+            products: [
+              {
+                name: "шкаф",
+                price: 350,
+              },
+              {
+                name: "стол",
+                price: 300,
+              },
+              {
+                name: "стул",
+                price: 150,
+              },
+              {
+                name: "тумба",
+                price: 200,
+              },
+            ],
+          };
+        },
+        methods: {
+          ascPrice() {
+            this.products.sort((a, b) => a.price - b.price);
+          },
+          descPrice() {
+            this.products.sort((a, b) => b.price - a.price);
+          },
+        },
+      };
+
+      Vue.createApp(app).mount("#app");
+    </script>
+  </body>
+</html>
